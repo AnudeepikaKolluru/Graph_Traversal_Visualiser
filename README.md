@@ -35,10 +35,10 @@ Graph_Traversal_Visualizer/
 ## Getting Started
 
 1. Clone the repository:
-```bash
+
 git clone https://github.com/AnudeepikaKolluru/Graph_Traversal_Visualiser.git
 
-2. Navigate to the project folder and open index.html in a web browser.
+2.Navigate to the project folder and open index.html in a web browser.
 
 No extra setup or dependencies are needed.
 
