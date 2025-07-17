@@ -26,7 +26,7 @@ Graph_Traversal_Visualizer/
 ├── types.html
 ├── visualising.html
 └── README.md
-
+```
 
 ## Technologies Used
 
