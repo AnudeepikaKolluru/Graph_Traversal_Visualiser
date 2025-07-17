@@ -11,6 +11,8 @@ An interactive tool to visualize Breadth-First Search (BFS) and Depth-First Sear
 - Simple and responsive UI
 
 ## Folder Structure
+
+```text
 Graph_Traversal_Visualizer/
 ├── css/
 ├── images/
