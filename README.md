@@ -44,6 +44,11 @@ git clone https://github.com/AnudeepikaKolluru/Graph_Traversal_Visualiser.git
 
 No extra setup or dependencies are needed.
 
+## Live Demo
+
+[Click here to view the project](https://anudeepikakolluru.github.io/Graph_Traversal_Visualiser/)
+
+
 ## Screenshots
 
 ### Main Pages
