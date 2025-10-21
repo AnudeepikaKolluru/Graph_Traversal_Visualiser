@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -118,13 +117,16 @@
         <input type="number" id="numNodes" name="numNodes" min="1" required />
         <label for="numEdges"> Number of Edges:</label>
         <input type="number" id="numEdges" name="numEdges" min="0" required />
+        <label for="timer"> Animation time(ms):</label>
+        <input type="number" id="timer" name="timer" min="0" value="650" required />
         <br>
         <div class="two">
             <button id="generateButton" onclick="generateGraph()">Generate Graph</button>
             <button id="clearButton" onclick="clearGraph()">Clear Graph</button>
             <button id="bfsButton" onclick="bfsTraversal()">BFS</button>
-            <button id="dfsButton" onclick="dfsTraversal()">DFS</button>
             <button id="showBFSTreeButton" onclick="displayBFSTree()">Show BFS Tree</button>
+            <button id="dfsButton" onclick="dfsTraversal()">DFS</button>
+
             <button id="showDFSTreeButton" onclick="displayDFSTree()">Show DFS Tree</button>
 
         </div>
@@ -223,6 +225,7 @@
             dfsTreeCanvas.height = 20;
             document.getElementById("numNodes").value = "";
             document.getElementById("numEdges").value = "";
+            document.getElementById("timer").value = "650";
             document.getElementById("statusLabel").innerText = "Graph Cleared";
             document.getElementById('generateButton').disabled = false;
         }
@@ -234,6 +237,10 @@
             document.getElementById('showDFSTreeButton').disabled = true;
             document.getElementById('generateButton').disabled = true;
             document.getElementById('clearButton').disabled = true;
+            if (document.getElementById("timer").value <= 0) {
+                document.getElementById("statusLabel").innerText = "Invalid animation time!";
+                return;
+            }
             document.getElementById("statusLabel").innerText = "BFS Traversal going on...";
 
             var numNodes = Object.keys(graph).length;
@@ -261,6 +268,7 @@
             }
 
             var currentNode = queue.shift();
+            var timer = document.getElementById("timer").value;
             visited.add(currentNode);
             if (parent !== -1) {
                 if (!bfsTree[parent]) {
@@ -277,7 +285,7 @@
                     }
                 });
                 bfsAnimation(queue, currentNode);
-            }, 500);
+            }, timer);
         }
 
         function dfsTraversal() {
@@ -287,6 +295,10 @@
             document.getElementById('showDFSTreeButton').disabled = true;
             document.getElementById('generateButton').disabled = true;
             document.getElementById('clearButton').disabled = true;
+            if (document.getElementById("timer").value <= 0) {
+                document.getElementById("statusLabel").innerText = "Invalid animation time!";
+                return;
+            }
             document.getElementById("statusLabel").innerText = "DFS Traversal going on...";
 
             var numNodes = Object.keys(graph).length;
@@ -305,7 +317,6 @@
                 document.getElementById("statusLabel").innerText = "DFS Traversal Completed";
                 document.getElementById('bfsButton').disabled = false;
                 updateAdjacencyList();
-
                 document.getElementById('showDFSTreeButton').disabled = false;
                 document.getElementById('clearButton').disabled = false;
                 buildDFSTree();
@@ -314,6 +325,7 @@
             }
 
             var currentNode = stack.pop();
+            var timer = document.getElementById("timer").value;
             visited.add(currentNode);
             if (parent !== -1) {
                 if (!dfsTree[parent]) {
@@ -330,7 +342,7 @@
                     }
                 });
                 dfsAnimation(stack, currentNode);
-            }, 500);
+            }, timer);
         }
 
         function updateAdjacencyList() {
@@ -526,5 +538,7 @@
 
     </script>
 </body>
+
+</html>
 
 </html>
